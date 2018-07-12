@@ -1,0 +1,52 @@
+{
+  "name": "kidsout",
+  "version": "0.1.0",
+  "private": true,
+  // "engines": {
+  //   "node": "8.2.1",
+  //   "npm": "4.6.1"
+  // },
+  "dependencies": {
+    // "babel-polyfill": "^6.26.0",
+    // "debounce": "^1.0.2",
+    // "mark.js": "github:julmot/mark.js",
+    // "moment-timezone": "^0.5.14",
+    "normalize.css": "^7.0.0",
+    // "react": "^15.6.1",
+    // "react-collapse": "^4.0.2",
+    // "react-dom": "^15.6.1",
+    "react-localize-redux": "^2.2.0",
+    "react-motion": "^0.5.0",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    // "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    // "reselect": "^3.0.1",
+    // "shortid": "^2.2.8",
+    // "stable": "^0.1.6",
+    // "url-search-params-polyfill": "^2.0.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "redux": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.7.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2",
+    "onchange": "^3.2.1",
+    "react-scripts": "1.1.4",
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/index.scss -o src/",
+    "watch-css": "npm run build-css && onchange \"**/*.scss\" -- npm run build-css",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    // "test": "react-scripts test --env=jsdom",
+    // "eject": "react-scripts eject"
+  }
+}

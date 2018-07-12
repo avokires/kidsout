@@ -1,0 +1,24 @@
+.row
+  display: flex
+
+  &.vertical
+    align-items: center
+
+  &.space_between
+    justify-content: space-between
+
+  &.right
+    justify-content: flex-end
+
+  & > [class*="col-"]
+    padding: 0 10px
+
+  & > [class*="col-"]:first-child
+    padding-left: 0
+
+  & > [class*="col-"]:last-child
+    padding-right: 0
+
+  @for $i from 1 through 12
+    .col-#{$i}
+      flex: $i

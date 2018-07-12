@@ -1,0 +1,3 @@
+export const MESSAGE_SEND = 'MESSAGE_SEND'
+export const MESSAGE_DELETE = 'MESSAGE_DELETE'
+export const MESSAGE_RESEND = 'MESSAGE_RESEND'
