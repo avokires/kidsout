@@ -47,6 +47,7 @@ class ChatPage extends Component {
     onSendMessage() {
         const { message } = this.state;
         const { sendMessage, profile } = this.props;
+        const tz = moment.tz.guess();
 
         if (!profile) { return null }
 
@@ -56,7 +57,7 @@ class ChatPage extends Component {
             sender_role: profile.role,
             message: [message],
             recepient_user: '789123',
-            created_at: moment().format('YYYY-MM-DDTHH:mm:ss.SSSS[00Z]'),
+            created_at: moment().tz('UTC').format('YYYY-MM-DDTHH:mm:ss.SSSS[00Z]'),
         }
         sendMessage(newMessage);
         this.setState({ message: '' });

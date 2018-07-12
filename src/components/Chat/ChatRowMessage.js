@@ -10,19 +10,20 @@ const ChatRowMessage = props => {
     const isRecepient = message.recepient_user === profile.id;
     const isSystem = message.sender_role === "system";
     const isSingle = message && message.message.length <= 1 || false;
+    const time = moment(message.created_at).format('HH:mm');
+
 
     if (isSystem) {
         const className = classnames("chat__notice", { 'chat__notice--success': !message.isError, 'chat__notice--danger': message.isError });
         return (
             <p className={className}>
                 Принял(а) заказ на 22 сентября 17:00-23:00
-                <time className="chat__item__time" dateTime="2007-08-29T14:40Z">14:40</time>
+                <time className="chat__item__time" dateTime="2007-08-29T14:40Z">{time}</time>
             </p>
         )
     }
 
     if (isRecepient) {
-        const time = moment(message.created_at).format('HH:mm')
         return (
             <div className="chat__recepient">
                 <div className="chat__item">
@@ -50,7 +51,7 @@ const ChatRowMessage = props => {
                             return <p className="chat__item__message" key={idx}>{item}</p>
                         })}
                     </div>
-                    <time className="chat__item__time" dateTime="2007-08-29T14:40Z">14:40</time>
+                    <time className="chat__item__time" dateTime="2007-08-29T14:40Z">{time}</time>
                     {message.isSending &&
                         <span className="chat__item__status">Отправляется…</span>
                     }

@@ -5,7 +5,7 @@ import ChatRowMessage from './ChatRowMessage';
 const ChatDayMessage = props => {
     const { dayMessages, profile, clients } = props;
     const date = moment(dayMessages[0].created_at).format('LL');
-    const isNow = moment(dayMessages[0].created_at).isSame(moment(), 'day');
+    const isNow = moment(dayMessages[0].created_at).utc().isSame(moment(), 'day');
 
     return [
         <p className="chat__date" key={date}>{isNow ? 'Сегодня' : date}</p>,
