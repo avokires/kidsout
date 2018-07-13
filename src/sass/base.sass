@@ -37,6 +37,10 @@
   height: 65px
   background-color: #ffffff
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)
+  position: fixed
+  width: 100%
+  top: 0
+  z-index: 1
 
   &__container
     display: flex
@@ -80,10 +84,19 @@
 //   /.header
 
 //   .chat
-.chat-users
-  padding: 20px 0
-
 .chat-header
+  position: fixed
+  top: 65px
+  left: 0
+  width: 100%
+  z-index: 1
+  background-color: #f6f6f6
+
+.chat-sidebar
+  padding: 20px 0
+  height: 100%
+
+.chat-messages-header
   border-bottom: 1px solid #c7c7c7
   padding: 20px 0
   position: relative
@@ -98,15 +111,15 @@
 
 .chat__body 
   overflow-y: auto
-  max-height: 75vh
   overflow: -moz-scrollbars-none
   -ms-overflow-style: none
+  background-color: #f6f6f6
 
 .chat__body::-webkit-scrollbar
   width: 0 !important
 
 .chat
-  padding: 20px 0 80px
+  padding: 85px 0 80px
   position: relative
 
   &__sender,
@@ -234,9 +247,16 @@
   text-align: center
 
 .chat__form
-  border-top: 1px solid #c7c7c7
   width: 100%
-  padding: 15px 0
+  position: fixed
+  left: 0
+  width: 100%
+  bottom: 0
+
+  &__container
+    border-top: 1px solid #c7c7c7
+    padding: 15px 0
+    background-color: #f6f6f6
 
   &__btn
     border-radius: 5px

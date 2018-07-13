@@ -424,6 +424,8 @@ body {
   margin: 0 auto;
   position: relative;
   padding: 0 70px; }
+  .container--main {
+    margin-top: 65px; }
 
 .hide {
   display: none; }
@@ -454,7 +456,11 @@ body {
 .header {
   height: 65px;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1; }
   .header__container {
     display: flex;
     align-items: center;
@@ -487,14 +493,23 @@ body {
   .header__menu a + a {
     margin-left: 40px; }
 
-.chat-users {
-  padding: 20px 0; }
-
 .chat-header {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: #f6f6f6; }
+
+.chat-sidebar {
+  padding: 20px 0;
+  height: 100%; }
+
+.chat-messages-header {
   border-bottom: 1px solid #c7c7c7;
   padding: 20px 0;
   position: relative; }
-  .chat-header__profile {
+  .chat-messages-header__profile {
     display: flex;
     align-items: center;
     position: absolute;
@@ -504,15 +519,15 @@ body {
 
 .chat__body {
   overflow-y: auto;
-  max-height: 75vh;
   overflow: -moz-scrollbars-none;
-  -ms-overflow-style: none; }
+  -ms-overflow-style: none;
+  background-color: #f6f6f6; }
 
 .chat__body::-webkit-scrollbar {
   width: 0 !important; }
 
 .chat {
-  padding: 20px 0 80px;
+  padding: 85px 0 80px;
   position: relative; }
   .chat__sender, .chat__recepient {
     width: 100%;
@@ -613,9 +628,15 @@ body {
   text-align: center; }
 
 .chat__form {
-  border-top: 1px solid #c7c7c7;
   width: 100%;
-  padding: 15px 0; }
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0; }
+  .chat__form__container {
+    border-top: 1px solid #c7c7c7;
+    padding: 15px 0;
+    background-color: #f6f6f6; }
   .chat__form__btn {
     border-radius: 5px;
     border: solid 2px #bfbfbf;
@@ -676,7 +697,7 @@ body {
   .row.right {
     justify-content: flex-end; }
   .row > [class*="col-"] {
-    padding: 0 10px; }
+    padding: 0 15px; }
   .row > [class*="col-"]:first-child {
     padding-left: 0; }
   .row > [class*="col-"]:last-child {

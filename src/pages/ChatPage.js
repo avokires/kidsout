@@ -37,9 +37,13 @@ class ChatPage extends Component {
 
     scrollToBottom() {
         const node = ReactDOM.findDOMNode(this.messagesContainer);
-        if (node) {
+        const nodeForm = ReactDOM.findDOMNode(this.formContainer);
+        console.log('node: ', node);
+        console.log('nodeForm: ', nodeForm);
+
+        if (node && nodeForm) {
             setTimeout(() => {
-                node.scrollTop = node.scrollHeight;
+                node.scrollTop = node.scrollHeight + nodeForm.scrollHeight;
             }, 10);
         }
     }
@@ -122,16 +126,21 @@ class ChatPage extends Component {
     renderForm() {
         const { message } = this.state;
         return (
-            <div className="chat__form">
-                <div className="row">
-                    <div className="col-10">
-                        <div className="chat__form-wrap">
-                            <div className="chat__form__message-copy">{message}{'\n'}</div>
-                            <textarea placeholder="Сообщение" value={message} onChange={this.onMessageChange} />
+            <div className="chat__form" ref={formContainer => { this.formContainer = formContainer; }}>
+                <div className="row container">
+                    <div className="col-3" />
+                    <div className="col-9">
+                        <div className="row chat__form__container">
+                            <div className="col-10">
+                                <div className="chat__form-wrap">
+                                    <div className="chat__form__message-copy">{message}{'\n'}</div>
+                                    <textarea placeholder="Сообщение" value={message} onChange={this.onMessageChange} />
+                                </div>
+                            </div>
+                            <div className="col-2">
+                                <button className="chat__form__btn" onClick={this.onSendMessage}>Отправить</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-2">
-                        <button className="chat__form__btn" onClick={this.onSendMessage}>Отправить</button>
                     </div>
                 </div>
             </div>
@@ -145,17 +154,29 @@ class ChatPage extends Component {
         if (!arParseMessages) { return null };
 
         return (
-            <div className="row container">
-                <div className="col-4">
-                    <div className="chat-users">
-                        <img src={leftSidebar} alt="leftSidebar" />
+            <div className="container container--main container--space">
+                <div className="chat-header">
+                    <div className="row container">
+                        <div className="col-3">
+                            <div className="chat-users__header"></div>
+                        </div>
+                        <div className="col-9">
+                            <ChatHeader profile={profile} />
+                        </div>
                     </div>
                 </div>
-                <div className="col-8">
-                    <ChatHeader profile={profile} />
-                    <div className="chat">
-                        {this.renderBody()}
-                        {this.renderForm()}
+
+                <div className="row">
+                    <div className="col-3">
+                        <div className="chat-sidebar">
+                            <img src={leftSidebar} alt="leftSidebar" width="100%"/>
+                        </div>
+                    </div>
+                    <div className="col-9">
+                        <div className="chat">
+                            {this.renderBody()}
+                            {this.renderForm()}
+                        </div>
                     </div>
                 </div>
             </div>
