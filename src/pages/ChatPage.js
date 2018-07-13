@@ -39,7 +39,7 @@ class ChatPage extends Component {
         const node = ReactDOM.findDOMNode(this.messagesContainer);
         const nodeForm = ReactDOM.findDOMNode(this.formContainer);
 
-        if (node) {
+        if (node && nodeForm) {
             setTimeout(() => {
                 node.scrollTop = node.scrollHeight + nodeForm.offsetHeight;
             }, 10);
@@ -107,7 +107,7 @@ class ChatPage extends Component {
         const { profile, clients } = this.props;
         const { arParseMessages } = this.state;
         return (
-            <div className="chat__body">
+            <div className="chat__body" ref={messagesContainer => { this.messagesContainer = messagesContainer; }}>
                 {Object.values(arParseMessages).map((dayMessages, idx) => {
                     return <ChatDayMessage
                         dayMessages={dayMessages}
@@ -171,7 +171,7 @@ class ChatPage extends Component {
                         </div>
                     </div>
                     <div className="col-9">
-                        <div className="chat" ref={messagesContainer => { this.messagesContainer = messagesContainer; }}>
+                        <div className="chat">
                             {this.renderBody()}
                             {this.renderForm()}
                         </div>

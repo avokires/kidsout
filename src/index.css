@@ -526,7 +526,8 @@ body {
 
 .chat__body {
   overflow-y: auto;
-  background-color: #f6f6f6; }
+  background-color: #f6f6f6;
+  height: calc(100vh - 235px); }
 
 .chat__body::-webkit-scrollbar {
   width: 0 !important; }
