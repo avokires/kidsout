@@ -38,8 +38,6 @@ class ChatPage extends Component {
     scrollToBottom() {
         const node = ReactDOM.findDOMNode(this.messagesContainer);
         const nodeForm = ReactDOM.findDOMNode(this.formContainer);
-        console.log('node: ', node);
-        console.log('nodeForm: ', nodeForm);
 
         if (node && nodeForm) {
             setTimeout(() => {
