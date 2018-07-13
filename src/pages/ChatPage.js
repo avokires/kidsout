@@ -39,9 +39,9 @@ class ChatPage extends Component {
         const node = ReactDOM.findDOMNode(this.messagesContainer);
         const nodeForm = ReactDOM.findDOMNode(this.formContainer);
 
-        if (node && nodeForm) {
+        if (node) {
             setTimeout(() => {
-                node.scrollTop = node.scrollHeight + nodeForm.scrollHeight;
+                node.scrollTop = node.scrollHeight + nodeForm.offsetHeight;
             }, 10);
         }
     }
@@ -50,7 +50,7 @@ class ChatPage extends Component {
         const { message } = this.state;
         const { sendMessage, profile } = this.props;
 
-        if (!profile) { return null }
+        if (!profile || !message) { return null }
 
         const newMessage = {
             id: uuid.v4(),
@@ -107,7 +107,7 @@ class ChatPage extends Component {
         const { profile, clients } = this.props;
         const { arParseMessages } = this.state;
         return (
-            <div className="chat__body" ref={messagesContainer => { this.messagesContainer = messagesContainer; }}>
+            <div className="chat__body">
                 {Object.values(arParseMessages).map((dayMessages, idx) => {
                     return <ChatDayMessage
                         dayMessages={dayMessages}
@@ -152,7 +152,7 @@ class ChatPage extends Component {
         if (!arParseMessages) { return null };
 
         return (
-            <div className="container container--main container--space">
+            <div className="container container--main">
                 <div className="chat-header">
                     <div className="row container">
                         <div className="col-3">
@@ -171,7 +171,7 @@ class ChatPage extends Component {
                         </div>
                     </div>
                     <div className="col-9">
-                        <div className="chat">
+                        <div className="chat" ref={messagesContainer => { this.messagesContainer = messagesContainer; }}>
                             {this.renderBody()}
                             {this.renderForm()}
                         </div>

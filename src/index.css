@@ -427,6 +427,13 @@ body {
   .container--main {
     margin-top: 65px; }
 
+.hide-scroll {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none; }
+
+.hide-scroll::-webkit-scrollbar {
+  display: none; }
+
 .hide {
   display: none; }
 
@@ -519,15 +526,13 @@ body {
 
 .chat__body {
   overflow-y: auto;
-  overflow: -moz-scrollbars-none;
-  -ms-overflow-style: none;
   background-color: #f6f6f6; }
 
 .chat__body::-webkit-scrollbar {
   width: 0 !important; }
 
 .chat {
-  padding: 85px 0 80px;
+  margin: 90px 0 80px;
   position: relative; }
   .chat__sender, .chat__recepient {
     width: 100%;

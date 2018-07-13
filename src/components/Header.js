@@ -30,7 +30,7 @@ class Header extends Component {
 
     return (
       <header className="header">
-        <div className="container container--space header__container">
+        <div className="container header__container">
           <Link className="header__logo" to='/'><img src={logo} alt="Logo" /></Link>
           <div className="header__menu">
               <NavLink to="/">Сообщения</NavLink>
