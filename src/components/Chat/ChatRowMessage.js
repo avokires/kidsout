@@ -4,12 +4,12 @@ import classnames from 'classnames';
 import Icon from './../../components/Icon';
 
 const ChatRowMessage = props => {
-    const { message, profile, clients, onResendMessage, onDeleteMessage } = props;
+    const { message, profile, clients } = props;
 
     const isSender = message.sender_user === profile.id;
     const isRecepient = message.recepient_user === profile.id;
     const isSystem = message.sender_role === "system";
-    const isSingle = message && message.message.length <= 1 || false;
+    const isSingle = (message && message.message.length <= 1) || false;
     const time = moment(message.created_at).format('HH:mm');
 
 

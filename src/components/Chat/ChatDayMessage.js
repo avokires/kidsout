@@ -10,7 +10,6 @@ const ChatDayMessage = props => {
     return [
         <p className="chat__date" key={date}>{isNow ? 'Сегодня' : date}</p>,
         dayMessages.map((message, idx) => {
-            const idMessage = message.created_at;
             return <ChatRowMessage
                 key={idx}
                 message={message}

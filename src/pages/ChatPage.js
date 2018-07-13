@@ -47,7 +47,6 @@ class ChatPage extends Component {
     onSendMessage() {
         const { message } = this.state;
         const { sendMessage, profile } = this.props;
-        const tz = moment.tz.guess();
 
         if (!profile) { return null }
 
@@ -63,14 +62,13 @@ class ChatPage extends Component {
         this.setState({ message: '' });
     }
 
-    onDeleteMessage(message){
+    onDeleteMessage(message) {
         const { deleteMessage } = this.props;
-        const { resendMessage } = this.props;
         const id = message.target.dataset.id;
         deleteMessage(id);
     }
 
-    onResendMessage(message){
+    onResendMessage(message) {
         const { resendMessage } = this.props;
         const id = message.target.dataset.id;
         resendMessage(id);
@@ -103,9 +101,46 @@ class ChatPage extends Component {
         this.setState({ arParseMessages });
     }
 
-    render() {
+    renderBody() {
         const { profile, clients } = this.props;
-        const { message, arParseMessages } = this.state;
+        const { arParseMessages } = this.state;
+        return (
+            <div className="chat__body" ref={messagesContainer => { this.messagesContainer = messagesContainer; }}>
+                {Object.values(arParseMessages).map((dayMessages, idx) => {
+                    return <ChatDayMessage
+                        dayMessages={dayMessages}
+                        key={idx}
+                        profile={profile}
+                        clients={clients}
+                        onDeleteMessage={(id) => this.onDeleteMessage(id)}
+                        onResendMessage={(id) => this.onResendMessage(id)} />
+                })}
+            </div>
+        );
+    }
+
+    renderForm() {
+        const { message } = this.state;
+        return (
+            <div className="chat__form">
+                <div className="row">
+                    <div className="col-10">
+                        <div className="chat__form-wrap">
+                            <div className="chat__form__message-copy">{message}{'\n'}</div>
+                            <textarea placeholder="Сообщение" value={message} onChange={this.onMessageChange} />
+                        </div>
+                    </div>
+                    <div className="col-2">
+                        <button className="chat__form__btn" onClick={this.onSendMessage}>Отправить</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    render() {
+        const { profile } = this.props;
+        const { arParseMessages } = this.state;
 
         if (!arParseMessages) { return null };
 
@@ -117,31 +152,10 @@ class ChatPage extends Component {
                     </div>
                 </div>
                 <div className="col-8">
-
                     <ChatHeader profile={profile} />
-
                     <div className="chat">
-                        <div className="chat__body" ref={messagesContainer => { this.messagesContainer = messagesContainer; }}>
-                            {Object.values(arParseMessages).map((dayMessages, idx) => {
-                                return <ChatDayMessage dayMessages={dayMessages} key={idx} profile={profile} clients={clients} onDeleteMessage={(id) => this.onDeleteMessage(id)} onResendMessage={(id) => this.onResendMessage(id)} />
-                            })}
-                        </div>
-
-                        <div className="chat__form">
-                            <div className="row">
-                                <div className="col-10">
-                                    <div className="chat__form-wrap">
-                                        <div className="chat__form__message-copy">{message}{'\n'}</div>
-                                        <textarea placeholder="Сообщение" value={message} onChange={this.onMessageChange} />
-                                    </div>
-                                </div>
-                                <div className="col-2">
-                                    <button className="chat__form__btn" onClick={this.onSendMessage}>
-                                        Отправить
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        {this.renderBody()}
+                        {this.renderForm()}
                     </div>
                 </div>
             </div>
