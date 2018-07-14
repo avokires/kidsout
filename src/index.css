@@ -549,8 +549,9 @@ body {
   background-color: #f6f6f6; }
 
 .chat-sidebar {
-  padding: 20px 0;
-  height: 100%; }
+  padding: 75px 0 20px;
+  height: 100vh;
+  overflow: auto; }
 
 .chat-messages-header {
   border-bottom: 1px solid #c7c7c7;

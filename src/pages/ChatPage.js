@@ -174,6 +174,7 @@ class ChatPage extends Component {
                     <div className="col-3">
                         <div className="chat-sidebar">
                             <img src={leftSidebar} alt="leftSidebar" width="100%" />
+                            <img src={leftSidebar} alt="leftSidebar" width="100%" />
                         </div>
                     </div>
                     <div className="col-9">
