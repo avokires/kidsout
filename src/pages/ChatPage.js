@@ -80,6 +80,7 @@ class ChatPage extends Component {
         const { target } = event;
         const message = target.value;
         this.setState({ message });
+        this.scrollToBottom();
     }
 
     parseMessages() {
@@ -105,19 +106,24 @@ class ChatPage extends Component {
 
     renderBody() {
         const { profile, clients } = this.props;
-        const { arParseMessages } = this.state;
+        const { arParseMessages, heightForm, message } = this.state;
         return (
-            <div className="chat__body" ref={messagesContainer => { this.messagesContainer = messagesContainer; }}>
-                {Object.values(arParseMessages).map((dayMessages, idx) => {
-                    return <ChatDayMessage
-                        dayMessages={dayMessages}
-                        key={idx}
-                        profile={profile}
-                        clients={clients}
-                        onDeleteMessage={(id) => this.onDeleteMessage(id)}
-                        onResendMessage={(id) => this.onResendMessage(id)} />
-                })}
-            </div>
+            <div className="chat__body" ref={messagesContainer => { this.messagesContainer = messagesContainer; }} style={{ height: `calc(100vh - ${(165 + heightForm)}px)` }}>
+                {
+                    Object.values(arParseMessages).map((dayMessages, idx) => {
+                        return <ChatDayMessage
+                            dayMessages={dayMessages}
+                            key={idx}
+                            profile={profile}
+                            clients={clients}
+                            onDeleteMessage={(id) => this.onDeleteMessage(id)}
+                            onResendMessage={(id) => this.onResendMessage(id)} />
+                    })
+                }
+                <div className="chat__form-wrap">
+                    <div className="chat__form__message-copy">{message}{'\n'}</div>
+                </div >
+            </div >
         );
     }
 
@@ -167,7 +173,7 @@ class ChatPage extends Component {
                 <div className="row">
                     <div className="col-3">
                         <div className="chat-sidebar">
-                            <img src={leftSidebar} alt="leftSidebar" width="100%"/>
+                            <img src={leftSidebar} alt="leftSidebar" width="100%" />
                         </div>
                     </div>
                     <div className="col-9">

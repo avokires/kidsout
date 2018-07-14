@@ -500,6 +500,46 @@ body {
   .header__menu a + a {
     margin-left: 40px; }
 
+.row {
+  display: flex; }
+  .row.vertical {
+    align-items: center; }
+  .row.space_between {
+    justify-content: space-between; }
+  .row.right {
+    justify-content: flex-end; }
+  .row > [class*="col-"] {
+    padding: 0 15px; }
+  .row > [class*="col-"]:first-child {
+    padding-left: 0; }
+  .row > [class*="col-"]:last-child {
+    padding-right: 0; }
+  .row .col-1 {
+    flex: 1; }
+  .row .col-2 {
+    flex: 2; }
+  .row .col-3 {
+    flex: 3; }
+  .row .col-4 {
+    flex: 4; }
+  .row .col-5 {
+    flex: 5; }
+  .row .col-6 {
+    flex: 6; }
+  .row .col-7 {
+    flex: 7; }
+  .row .col-8 {
+    flex: 8; }
+  .row .col-9 {
+    flex: 9; }
+  .row .col-10 {
+    flex: 10; }
+  .row .col-11 {
+    flex: 11; }
+  .row .col-12 {
+    flex: 12; }
+
+/*======Component======================================================*/
 .chat-header {
   position: fixed;
   top: 65px;
@@ -527,7 +567,7 @@ body {
 .chat__body {
   overflow-y: auto;
   background-color: #f6f6f6;
-  height: calc(100vh - 235px); }
+  height: calc(100vh - 200px); }
 
 .chat__body::-webkit-scrollbar {
   width: 0 !important; }
@@ -658,6 +698,8 @@ body {
   width: 100%;
   display: inline-block;
   position: relative; }
+  .chat__body .chat__form-wrap {
+    opacity: 0; }
   .chat__form-wrap .chat__form__message-copy {
     text-align: left;
     display: inline-block;
@@ -694,46 +736,6 @@ body {
     .chat__form-wrap textarea:focus {
       outline: none; }
 
-.row {
-  display: flex; }
-  .row.vertical {
-    align-items: center; }
-  .row.space_between {
-    justify-content: space-between; }
-  .row.right {
-    justify-content: flex-end; }
-  .row > [class*="col-"] {
-    padding: 0 15px; }
-  .row > [class*="col-"]:first-child {
-    padding-left: 0; }
-  .row > [class*="col-"]:last-child {
-    padding-right: 0; }
-  .row .col-1 {
-    flex: 1; }
-  .row .col-2 {
-    flex: 2; }
-  .row .col-3 {
-    flex: 3; }
-  .row .col-4 {
-    flex: 4; }
-  .row .col-5 {
-    flex: 5; }
-  .row .col-6 {
-    flex: 6; }
-  .row .col-7 {
-    flex: 7; }
-  .row .col-8 {
-    flex: 8; }
-  .row .col-9 {
-    flex: 9; }
-  .row .col-10 {
-    flex: 10; }
-  .row .col-11 {
-    flex: 11; }
-  .row .col-12 {
-    flex: 12; }
-
-/*======Component======================================================*/
 .svg-icon {
   margin-right: 9px;
   margin-bottom: 12px;
