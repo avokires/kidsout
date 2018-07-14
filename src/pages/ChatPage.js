@@ -164,7 +164,7 @@ class ChatPage extends Component {
                         <div className="col-3">
                             <div className="chat-users__header"></div>
                         </div>
-                        <div className="col-9">
+                        <div className="col-9 no-padding">
                             <ChatHeader profile={profile} />
                         </div>
                     </div>
@@ -177,7 +177,7 @@ class ChatPage extends Component {
                             <img src={leftSidebar} alt="leftSidebar" width="100%" />
                         </div>
                     </div>
-                    <div className="col-9">
+                    <div className="col-9 no-padding">
                         <div className="chat">
                             {this.renderBody()}
                             {this.renderForm()}

@@ -9,12 +9,12 @@
   background-color: #f6f6f6
 
 .chat-sidebar
-  padding: 75px 0 20px
+  padding: 0 20px 20px 0
   height: calc(100vh + 180px)
   overflow: auto
+  margin-top: 74px
 
 .chat-messages-header
-  border-bottom: 1px solid #c7c7c7
   padding: 20px 0
   position: relative
 
@@ -29,13 +29,12 @@
 .chat__body 
   overflow-y: auto
   background-color: #f6f6f6
-  height: 100vh
-
-.chat__body::-webkit-scrollbar
-  width: 0 !important
+  height: calc(100vh - 210px)
+  padding: 15px 25px 0 10px
+  border-top: 1px solid #c7c7c7
 
 .chat
-  margin: 90px 0 80px
+  margin: 74px 0 80px
   position: relative
 
   &__sender,
