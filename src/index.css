@@ -550,7 +550,7 @@ body {
 
 .chat-sidebar {
   padding: 75px 0 20px;
-  height: 100vh;
+  height: calc(100vh + 180px);
   overflow: auto; }
 
 .chat-messages-header {
@@ -568,7 +568,7 @@ body {
 .chat__body {
   overflow-y: auto;
   background-color: #f6f6f6;
-  height: calc(100vh - 200px); }
+  height: 100vh; }
 
 .chat__body::-webkit-scrollbar {
   width: 0 !important; }
@@ -712,6 +712,8 @@ body {
     max-height: 195px;
     padding: 10px 15px;
     line-height: 18px; }
+    .chat__body .chat__form-wrap .chat__form__message-copy {
+      padding: 0; }
   .chat__form-wrap textarea {
     border: none;
     width: 100%;
