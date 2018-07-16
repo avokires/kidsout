@@ -613,7 +613,8 @@ body {
     line-height: 1.43;
     margin-bottom: 5px;
     width: max-content;
-    max-width: 300px; }
+    max-width: 300px;
+    white-space: pre; }
     .chat__sender .chat__item__message {
       margin-right: 0;
       margin-left: 10px; }
